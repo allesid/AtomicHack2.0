@@ -17,6 +17,7 @@ app.config['UPLOAD'] = upload_folder
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
+        log.info('---> GOT FORM')
         # Get uploaded image
         file = request.files['img']
         filename = secure_filename(file.filename)

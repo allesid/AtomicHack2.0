@@ -1,20 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Rendering Dynamic Images Using Flask</title>
-    </head>
-    <body>
-        <form action="{{ url_for('upload_file') }}" enctype="multipart/form-data" method="POST">
-            <input name="img" type="file"/>
-            <input type="submit"/>
-        </form>
-    
-        {% if img %}
-        <h1>Rendered Image</h1>
-        <img src="{{img}}">
-        {% else %}
-        <h1>Image will be render here...</h1>
-        {% endif %}
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>JustTeam</title>
+    <link rel="shortcut icon" href="/static/images/icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--    // fonts//-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Tiny5&display=swap" rel="stylesheet">
+<!--    // bootstrap//-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!--    owl-css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--    personal css/js-->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/myscripts.js" defer></script>
+</head>
+<body>
+        <header class="header">
+            <div class="container">
+                <div class="row">
+            <div class="logo">
+                <img class="img-logo" src="/static/images/LOGO.svg" alt="Logo" class="logo-img">
+            </div>
+                </div>
+            </div>
+        </header>
+        <section class="input-form">
+            <div class="container">
+                <div class="row">
+                    <b class="input-form-b">
+                        See, how it works
+                    </b>
+                    <div class="input-form__wrapper">
+                        {% if img %}
+                        <img class="form__input-currentImg" id="current-photo" src="{{img}}" alt="Current Photo">
+                        {% else %}
+                        <img class="form__input-currentImg" id="current-photo" src="/static/images/downloadIcon.png" alt="Current Photo">
+                        {% endif %}
+                        <form class="form" id="input-form" action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
+                            <input class="form__input-file" id="form__input-file" name="img" type="file"/>
+                            <label for="form__input-file" class="label-input">Update image here</label>
+                            <input type="submit" class="label-input"/>
+                        </form>
+                    </div>
+                    <div class="form__output" id="form__output"></div>
+                </div>
+            </div>
+        </section>
+        <section class="preview__section">
+            <div class="container">
+                <div class="row">
+            <div class="preview__section-wrapper">
+                    <h1 class="preview__section-h1">
+                        AI cooperation<br>
+                        With welding
+                    </h1>
+                <p class="preview__section-p">
+                    Some text that we can input here
+                </p>
+            </div>
+                </div>
+            </div>
+        </section>
+        <section class="feature-slider__section">
+            <div class="container">
+                <div class="row">
+                    <div class="owl-carousel owl-theme">
+                        <div class="slider__wrapper">
+                            <h4 class="slider__wrapper-h4">Some text</h4>
+                            <p class="slider__wrapper-p">Some feature description we will past here</p>
+                        </div>
+                        <div class="slider__wrapper">
+                            <h4 class="slider__wrapper-h4">Some text</h4>
+                            <p class="slider__wrapper-p">Some feature description we will past here</p>
+                        </div>
+                        <div class="slider__wrapper">
+                            <h4 class="slider__wrapper-h4">Some text</h4>
+                            <p class="slider__wrapper-p">Some feature description we will past here</p>
+                        </div>
+                        <div class="slider__wrapper">
+                            <h4 class="slider__wrapper-h4">Some text</h4>
+                            <p class="slider__wrapper-p">Some feature description we will past here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="team-introduction">
+            <div class="container">
+                <div class="row">
+                    <div class="owl-carousel owl-theme">
+
+                        <div class="team__wrapper">
+                            <img class="team-photo" src="/static/images/members/Artem.jpg" alt="Backender-photo">
+                            <h4 class="member-name">Саттаров Артем</h4>
+                            <p class="member-description">ML Engineer</p>
+                            <a class="Tg-link" href="https://t.me/fw_jager">Telegram</a>
+                        </div>
+                        <div class="team__wrapper">
+                            <img class="team-photo" src="/static/images/members/Daria.jpg" alt="Daria-photo">
+                            <h4 class="member-name">Бабина Дарья</h4>
+                            <p class="member-description">ML Engineer</p>
+                            <a class="Tg-link" href="https://t.me/cupofph">Telegram</a>
+                        </div>
+                        <div class="team__wrapper">
+                            <img class="team-photo" src="/static/images/members/Alexey.jpg" alt="Alexey-photo">
+                            <h4 class="member-name">Сидоров Алексей</h4>
+                            <p class="member-description">ML Engineer</p>
+                            <a class="Tg-link" href="https://t.me/allesid">Telegram</a>
+                        </div>
+                        <div class="team__wrapper">
+                            <img class="team-photo" src="/static/images/members/Kirill.jpg" alt="Kirill-photo">
+                            <h4 class="member-name">Кирилл Джунковский</h4>
+                            <p class="member-description">Backend-developer</p>
+                            <a class="Tg-link" href="https://t.me/dzhunkoffski">Telegram</a>
+                        </div>
+                        <div class="team__wrapper">
+                            <img class="team-photo" src="/static/images/members/Iuliia.jpg" alt="Frontender-photo">
+                            <h4 class="member-name">Подлуцкая Юлия</h4>
+                            <p class="member-description">Frontend-developer</p>
+                            <a class="Tg-link" href="https://t.me/gaga_g">Telegram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <p class="copyright">JustTeam 2024</p>
+                </div>
+            </div>
+        </footer>
+</body>
+<!--// bootstrap script//-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!--    JQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--    owl-carousel-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </html>
