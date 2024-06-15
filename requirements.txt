@@ -4,3 +4,5 @@ pillow
 pybboxes
 plotly
 pandas
+ultralytics
+gdown
