@@ -20,7 +20,7 @@ class DummyDetector:
             },
             {
                 'coords': [212, 143, 97, 55],
-                'label': 0,
+                'label': 1,
                 'score': 0.96
             }
         ]
