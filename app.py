@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
+from flask_socketio import SocketIO
 from werkzeug.utils import secure_filename
 import os
 from base64 import b64encode
@@ -16,10 +17,12 @@ import plotly
 import json
 
 import pandas as pd
+from asyncio import sleep
 
 app = Flask(__name__)
 upload_folder = os.path.join('static', 'uploads')
 app.config['UPLOAD'] = upload_folder
+socketio = SocketIO(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
@@ -52,6 +55,21 @@ def upload_file():
         dashboard_json = json.dumps(dashboard_fig, cls=plotly.utils.PlotlyJSONEncoder)
         return render_template('index.html', annotated_img_json=annotated_img, dashboard_json=dashboard_json)
     return render_template('index.html')
+
+@app.route("/progress/<socketid>", methods = ["POST", "GET"])
+async def progress(socketid):
+    for x in range(1,6):
+        socketio.emit("update progress", x * 20, to=socketid)
+        await sleep(2)
+
+    socketio.emit("progress complete", {"status": "complete", "num_image": 9}, to=socketid)
+    return Response(status=204)
+
+
+
+@app.route("/progress", methods=["GET", "POST"])
+def dashboard_page():
+    return render_template('dataset_dashboard_wait.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
