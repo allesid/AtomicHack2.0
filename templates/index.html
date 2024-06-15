@@ -52,7 +52,22 @@
                         </form>
                     </div>
                     {% if dashboard_json %}
-                    <div class="form__output" id="form__output"></div>
+                    <div class="form-output__wrapper">
+                            <div class="form__output" id="form__output">
+                            </div>
+                        <datalist class="form__output-datalist">
+                            <p class="form__output-p">
+                                <b class="form__output-b">adj</b> - брызги, прожоги от дуги, название класса </p>
+                            <p class="form__output-p">
+                                <b class="form__output-b">int</b> - кратер, шлак, свищ, пора, прожог, включения, название класса </p>
+                            <p class="form__output-p">
+                                <b class="form__output-b">geo</b> - подрез, непровар, наплыв, чешуйчатость, западание, неравномерность, название класса </p>
+                            <p class="form__output-p">
+                                <b class="form__output-b">pro</b> - заусенец, торец, задир, забоина, название класса </p>
+                            <p class="form__output-p">
+                                <b class="form__output-b">non</b> - незаполнение раковины, несплавление, название класса </p>
+                        </datalist>
+                        </div>
                     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
                     <script>
                         var graph1 = {{ dashboard_json | safe}};
