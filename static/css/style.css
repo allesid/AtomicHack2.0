@@ -89,11 +89,11 @@ header{
     justify-content: center;
     background: none;
     border: solid 3px #ffffff;
-    width: 50%;
-    max-width: 50%;
+    width: 50%!important;
+    max-width: 50%!important;
 }
 .form__input-file,.form__output{
-    width: 50%;
+    width: 50%!important!;
     display: flex;
     flex-direction: column;
 }
