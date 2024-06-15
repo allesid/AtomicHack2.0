@@ -113,7 +113,6 @@ header{
     width: 100%;
     flex-direction: column;
     color: #ffffff;
-    border-top: solid 4px;
     padding: 1em;
 }
 .form__input-currentImg,.form__input-file{
