@@ -96,6 +96,26 @@ header{
     display: flex;
     flex-direction: column;
 }
+.form__output{
+    background: transparent;
+    border: none;
+    width: 100%;
+    height: 50%;
+}
+.form-output__wrapper{
+    border: solid 4px #ffffff;
+    width: 50%;
+}
+.form__output-datalist{
+    display: flex;
+    justify-content: center;
+    height: 50%;
+    width: 100%;
+    flex-direction: column;
+    color: #ffffff;
+    border-top: solid 4px;
+    padding: 1em;
+}
 .form__input-currentImg,.form__input-file{
     height: 500px;
     width: 100%;
@@ -180,6 +200,10 @@ label{
     .form__input-currentImg,.form__input-file{
         height: 300px;
     }
+     .form__output-p{
+        margin: 0;
+        font-size: 12px;
+    }
 }
 @media screen and (max-width: 768px) {
 .form{
@@ -190,9 +214,16 @@ label{
         width: 100%;
         max-width:100%;
     }
+     .form-output__wrapper{
+        width: 100%;
+    }
     .form__input-currentImg,.form__output{
         height: 300px;
         width: 100%;
+    }
+    .form__output-p{
+        margin: 1em;
+        font-size: 14px;
     }
 }
 @media screen and (max-width: 576px) {
