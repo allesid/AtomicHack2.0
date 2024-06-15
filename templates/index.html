@@ -32,7 +32,7 @@
             <div class="container">
                 <div class="row">
                     <b class="input-form-b">
-                        See, how it works
+                        Взгляните, как это работает
                     </b>
                     <div class="input-form__wrapper">
                         {% if annotated_img_json %}
@@ -46,9 +46,12 @@
                         <img class="form__input-currentImg" id="current-photo" src="/static/images/downloadIcon.png" alt="Current Photo">
                         {% endif %}
                         <form class="form" id="input-form" action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
-                            <input class="form__input-file" id="form__input-file" name="img" type="file"/>
-                            <label for="form__input-file" class="label-input">Update image here</label>
-                            <input type="submit" class="label-input"/>
+                             <div class="input__wrapper">
+                                <input class="form__input-file" id="form__input-file" name="img" type="file"/>
+                                <label for="form__input-file" class="label-input">Загрузить картинку</label>
+                                <input type="submit" class="form__input-file" id="label-input"/>
+                                <label for="label-input" class="label-input">Отправить</label>
+                            </div>
                         </form>
                     </div>
                     {% if dashboard_json %}

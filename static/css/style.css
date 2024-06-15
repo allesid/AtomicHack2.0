@@ -83,6 +83,20 @@ header{
     width: 100%;
     display: flex;
 }
+.input__wrapper{
+    display:flex;
+    justify-content:row;
+    width:100%;
+}
+.label-input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    width: 50%;
+    border: solid white 2px;
+    
+}
 .input-form__wrapper{
     display: flex;
     flex-direction: column;
@@ -113,7 +127,6 @@ header{
     width: 100%;
     flex-direction: column;
     color: #ffffff;
-    border-top: solid 4px;
     padding: 1em;
 }
 .form__input-currentImg,.form__input-file{
