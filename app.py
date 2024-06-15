@@ -5,10 +5,17 @@ from base64 import b64encode
 import io
 
 from utils.bbox import draw_bboxes
+from utils.visualizations import annotated_img_plotly_fig, annotated_img_plotly_meta
 from defection_detector import DummyDetector
 
 import logging
+logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
+
+import plotly
+import json
+
+import pandas as pd
 
 app = Flask(__name__)
 upload_folder = os.path.join('static', 'uploads')
@@ -28,13 +35,22 @@ def upload_file():
         # Get predictions
         dm = DummyDetector()
         predictions = dm(img)
+        log.info(predictions)
+
+        # df = pd.DataFrame.from_records(predictions).drop(columns=['coords'])
+        # log.info(df.to_string())
+        # agg_df = df.groupby('label')['score'].mean()
+        # log.info(agg_df.reset_index())
 
         # Make visaulization
-        new_img = draw_bboxes(img, boxes=predictions, score=True)
-        image_io = io.BytesIO()
-        new_img.save(image_io, 'PNG')
-        dataurl = 'data:image/png;base64,' + b64encode(image_io.getvalue()).decode('ascii')
-        return render_template('index.html', img=dataurl)
+        image = draw_bboxes(img, boxes=predictions, score=True)
+        img_fig = annotated_img_plotly_fig(image)
+        annotated_img = json.dumps(img_fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+        # Make prediction meta visualization
+        dashboard_fig = annotated_img_plotly_meta(predictions)
+        dashboard_json = json.dumps(dashboard_fig, cls=plotly.utils.PlotlyJSONEncoder)
+        return render_template('index.html', annotated_img_json=annotated_img, dashboard_json=dashboard_json)
     return render_template('index.html')
 
 if __name__ == '__main__':

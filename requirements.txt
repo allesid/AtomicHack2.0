@@ -2,3 +2,5 @@ flask
 opencv-python
 pillow
 pybboxes
+plotly
+pandas

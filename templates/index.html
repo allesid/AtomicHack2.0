@@ -35,8 +35,13 @@
                         See, how it works
                     </b>
                     <div class="input-form__wrapper">
-                        {% if img %}
-                        <img class="form__input-currentImg" id="current-photo" src="{{img}}" alt="Current Photo">
+                        {% if annotated_img_json %}
+                        <div class="form__input-currentImg" id="current-photo"></div>
+                        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+                        <script>
+                            var graph1 = {{ annotated_img_json | safe}};
+                            Plotly.plot("current-photo", graph1, {});
+                        </script>
                         {% else %}
                         <img class="form__input-currentImg" id="current-photo" src="/static/images/downloadIcon.png" alt="Current Photo">
                         {% endif %}
@@ -46,7 +51,16 @@
                             <input type="submit" class="label-input"/>
                         </form>
                     </div>
+                    {% if dashboard_json %}
                     <div class="form__output" id="form__output"></div>
+                    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+                    <script>
+                        var graph1 = {{ dashboard_json | safe}};
+                        Plotly.plot("form__output", graph1, {});
+                    </script>
+                    {% else %}
+                    <div class="form__output" id="form__output">Пока картинки нет какой то текст есть</div>
+                    {% endif %}
                 </div>
             </div>
         </section>
