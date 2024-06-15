@@ -90,6 +90,7 @@ header{
     background: none;
     border: solid 3px #ffffff;
     width: 50%;
+    max-width: 50%; 
 }
 .form__input-file,.form__output{
     width: 50%;
@@ -188,6 +189,7 @@ label{
 }
     .input-form__wrapper{
         width: 100%;
+        max-width:100%;
     }
     .form__input-currentImg,.form__output{
         height: 300px;
