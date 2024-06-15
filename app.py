@@ -51,6 +51,7 @@ def upload_file():
         image = draw_bboxes(img, boxes=predictions, score=True)
         img_fig = annotated_img_plotly_fig(image)
         annotated_img = json.dumps(img_fig, cls=plotly.utils.PlotlyJSONEncoder)
+        log.info(annotated_img)
 
         # Make prediction meta visualization
         dashboard_fig = annotated_img_plotly_meta(predictions)
