@@ -26,7 +26,7 @@ def cs(img_path: str, checkpoint_path: str): # , prep_model: str
         else:   
             for i in range(ndef):
                 submit_df0.loc[j] = [sample.path.split('/')[-1],int(sample.boxes.cls[i].item())]
-                submit_df1.loc[j] = sample.boxes.xywh[i].cpu().numpy().tolist()
+                submit_df1.loc[j] = sample.boxes.xywhn[i].cpu().numpy().tolist()
                 j += 1
     df = pd.concat((submit_df0,submit_df1),axis=1)
     df.to_csv('submission.csv',sep=';',header=False,index=False)
