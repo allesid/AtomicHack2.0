@@ -76,8 +76,6 @@
                         var graph1 = {{ dashboard_json | safe}};
                         Plotly.plot("form__output", graph1, {});
                     </script>
-                    {% else %}
-                    <div class="form__output" id="form__output">Пока картинки нет какой то текст есть</div>
                     {% endif %}
                 </div>
             </div>
@@ -86,12 +84,8 @@
             <div class="container">
                 <div class="row">
             <div class="preview__section-wrapper">
-                    <h1 class="preview__section-h1">
-                        AI cooperation<br>
-                        With welding
-                    </h1>
                 <p class="preview__section-p">
-                    Some text that we can input here
+                    <a href="{{ url_for('batch_form') }}">Попробовать пакетную обработку</a>
                 </p>
             </div>
                 </div>

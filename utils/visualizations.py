@@ -44,7 +44,7 @@ def annotated_img_plotly_fig(image: Image):
     fig.update_xaxes(visible=False, range=[0, img_width])
     fig.update_yaxes(visible=False, range=[0, img_height], scaleanchor="x")
 
-    rescaling_coeff = 600 / img_width
+    rescaling_coeff = 400 / max(img_width, img_height)
 
     # # Set the aspect ratio and margins
     fig.update_layout(
@@ -64,5 +64,5 @@ def annotated_img_plotly_meta(predictions: List[dict]):
     fig = make_subplots(rows=2, cols=1)
     fig.append_trace(go.Histogram(x=df["label"]), row=1, col=1)
     fig.append_trace(go.Bar(x=agg_score_df["label"], y=df["score"]), row=2, col=1)
-    fig.update_layout(height=300, width=600, title_text="Stacked Subplots")
+    fig.update_layout(height=300, width=600, showlegend=False, title_text="Распрелеление классов (сверху), уверенность в каждом классе (снизу)")
     return fig

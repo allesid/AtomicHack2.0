@@ -1,8 +1,15 @@
 from ultralytics import YOLO
+import torch
+
+import logging
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger(__name__)
 
 class YoloModel:
     def __init__(self, checkpoint_path: str):
-        self.model = YOLO(model=checkpoint_path)
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        log.info(self.device)
+        self.model = YOLO(model=checkpoint_path).to(self.device)
     def __call__(self, img_path: str):
         """
         Detects objects in the image (Call from backend)
