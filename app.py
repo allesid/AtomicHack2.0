@@ -6,7 +6,7 @@ import io
 
 from utils.bbox import draw_bboxes
 from utils.visualizations import annotated_img_plotly_fig, annotated_img_plotly_meta
-from defection_detector import DummyDetector, YoloModel
+from defection_detector import DummyDetector, YoloModel, Predict
 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -19,13 +19,14 @@ from pathlib import Path
 
 import pandas as pd
 
-YOLO_PATH = Path('defection_detector\\model\\checkpoints\\YOLOv9c_50epochs.pt')
+YOLO_PATH = './defection_detector/model/checkpoints/YOLOv9c_50epochs.pt'
 
 app = Flask(__name__)
 upload_folder = os.path.join('static', 'uploads')
 app.config['UPLOAD'] = upload_folder
 
 model = YoloModel(checkpoint_path=str(YOLO_PATH))
+# model = Predict(checkpoint_path=str(YOLO_PATH))
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
