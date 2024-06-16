@@ -21,7 +21,11 @@
 ```bash
 pip install -r requirements.txt
 ```
-2. Запустить локально сервер:
+2.Скачать чекпоинт по ссылке (YOLOv9c_50epochs.pt) (https://drive.google.com/file/d/1i67vtEpVZ39buGJ1fQcVgrHmlX2d_QMq/view?usp=drive_link) и положить его в папку:
+```bash
+defection_detector/model/checkpoints
+```
+3. Запустить локально сервер:
 ```bash
 python -m flask --app app run
 ```
